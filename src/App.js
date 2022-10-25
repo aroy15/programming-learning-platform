@@ -1,12 +1,10 @@
+import { RouterProvider } from 'react-router-dom';
 import './App.css';
-import Header from './pages/shared/Header/Header';
+import { routes } from './Routes/Routes';
 
 function App() {
   return (
-    <div className='text-center'>
-      <Header></Header>
-      <h2>App installation ready</h2>
-    </div>
+    <RouterProvider router={routes}></RouterProvider>
   );
 }
 
