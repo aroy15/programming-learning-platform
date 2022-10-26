@@ -1,10 +1,11 @@
 .carousel-item{
-    background:rgba(0,0,0,0.7);
+    background: rgb(4, 53, 15);
+    background: linear-gradient(145deg, rgba(4, 53, 15,1) 0%, rgb(6, 64, 73) 84%);
 }
 .carousel-item img{
-    opacity: 0.4;
+    opacity: 0.3;
     padding:30px ;
-    max-height: 75vh;
+    max-height: 70vh;
 }
 .carousel-caption {
     top:60%;
