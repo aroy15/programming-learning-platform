@@ -3,17 +3,24 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Sidebar from '../shared/Sidebar/Sidebar';
 import { useLoaderData } from 'react-router-dom';
+import CourseCard from '../shared/CourseCard/CourseCard';
 
 const Courses = () => {
     const courses = useLoaderData();
     return (
         <Row>
             <Col xs={12} md={8}>
-                {
-                    courses.map(course => <h3 
-                    key={course._id}                    
-                    >{course.course_title}</h3>)
+                <Row className='g-3'>
+                        {
+                    courses.map(course => <Col                     
+                    key={course._id}
+                    xs={12} lg={6}
+                    className='d-flex'
+                    >
+                        <CourseCard course={course}></CourseCard>
+                    </Col>)
                 }
+                </Row>
             </Col>
             <Col xs={6} md={4}>
                 <Sidebar></Sidebar>
