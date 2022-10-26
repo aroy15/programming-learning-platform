@@ -18,6 +18,12 @@ const Header = () => {
     const [themes, setThemes] = useState(true);
     const handleThemes = () => setThemes(!themes);
 
+    const handleSignOut = () =>{
+        logOut()
+        .then(()=>console.log('logout successful'))
+        .catch(error => console.log(error))
+    }
+
     return (
         <Navbar bg="light" expand="lg" className='shadow-sm'>
             <Container>
@@ -39,7 +45,7 @@ const Header = () => {
                                 !user ? <Link className='text-decoration-none text-success fw-semibold pe-3' to='/login'>Login</Link>
                                     :
                                     <>
-                                        <Button onClick={logOut} variant='link' className='text-decoration-none text-success fw-semibold'>Log Out</Button>
+                                        <Button onClick={handleSignOut} variant='link' className='text-decoration-none text-success fw-semibold'>Log Out</Button>
                                         <OverlayTrigger
                                             placement='left'
                                             overlay={
