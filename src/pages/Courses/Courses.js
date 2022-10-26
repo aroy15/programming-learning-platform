@@ -8,7 +8,7 @@ import CourseCard from '../shared/CourseCard/CourseCard';
 const Courses = () => {
     const courses = useLoaderData();
     return (
-        <Row>
+        <Row className='g-4'>
             <Col xs={12} md={8}>
                 <Row className='g-3'>
                         {
@@ -22,7 +22,7 @@ const Courses = () => {
                 }
                 </Row>
             </Col>
-            <Col xs={6} md={4}>
+            <Col xs={12} md={4}>
                 <Sidebar></Sidebar>
             </Col>
         </Row>
