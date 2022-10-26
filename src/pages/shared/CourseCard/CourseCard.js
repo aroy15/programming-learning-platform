@@ -6,7 +6,7 @@ const CourseCard = ({ course }) => {
     const { course_title, _id, details_overview, image_url, overview_title, ratings } = course
     const detailsOverview = details_overview.slice(0, 3);
     return (
-        <Card>
+        <Card className='shadow border-success'>
             <Card.Img variant="top" className='card_img p-3' src={image_url} />
             <Card.Body>
                 <Card.Title>{course_title}</Card.Title>

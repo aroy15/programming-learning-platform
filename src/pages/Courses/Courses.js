@@ -8,24 +8,27 @@ import CourseCard from '../shared/CourseCard/CourseCard';
 const Courses = () => {
     const courses = useLoaderData();
     return (
-        <Row className='g-4'>
-            <Col xs={12} md={8}>
-                <Row className='g-3'>
+        <>
+            <h2 className='pb-5 text-center'>Programming Courses</h2>
+            <Row className='g-4'>
+                <Col xs={12} md={8}>
+                    <Row className='g-4'>
                         {
-                    courses.map(course => <Col                     
-                    key={course._id}
-                    xs={12} lg={6}
-                    className='d-flex'
-                    >
-                        <CourseCard course={course}></CourseCard>
-                    </Col>)
-                }
-                </Row>
-            </Col>
-            <Col xs={12} md={4}>
-                <Sidebar></Sidebar>
-            </Col>
-        </Row>
+                            courses.map(course => <Col
+                                key={course._id}
+                                xs={12} lg={6}
+                                className='d-flex'
+                            >
+                                <CourseCard course={course}></CourseCard>
+                            </Col>)
+                        }
+                    </Row>
+                </Col>
+                <Col xs={12} md={4}>
+                    <Sidebar></Sidebar>
+                </Col>
+            </Row>
+        </>
     );
 };
 

@@ -1,0 +1,12 @@
+.carousel-item{
+    background:rgba(0,0,0,0.7);
+}
+.carousel-item img{
+    opacity: 0.4;
+    padding:30px ;
+    max-height: 75vh;
+}
+.carousel-caption {
+    top:60%;
+    transform:translateY(-50%)
+}

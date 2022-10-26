@@ -20,7 +20,7 @@ const Header = () => {
     return (
         <Navbar bg="light" expand="lg" className='shadow-sm'>
             <Container className=''>
-                <Navbar.Brand href="#home">Programming Education</Navbar.Brand>
+                <Link to='/' className='navbar-brand text-success fw-semibold'>Programming Education</Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mx-auto">

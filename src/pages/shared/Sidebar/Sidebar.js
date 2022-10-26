@@ -1,26 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FaCheckCircle } from "react-icons/fa";
+import './Sidebar.css';
 
 const Sidebar = () => {
-    
+
     const [courses, setCourses] = useState([]);
 
-    useEffect(()=>{
+    useEffect(() => {
         fetch('http://localhost:5000/courses')
-        .then(res => res.json())
-        .then(data => setCourses(data))
-    },[])
+            .then(res => res.json())
+            .then(data => setCourses(data))
+    }, [])
+
+    const SidebarCourseItem = ({ course }) => {
+        return (
+            <li class="list-group-item px-0">
+                <h5 className='d-flex align-items-center gap-2'>
+                    <span>
+                        <FaCheckCircle className='text-success'/>
+                    </span>
+                    <Link
+                        to={`/courses/${course._id}`}
+                        className='text-success d-block text-decoration-none fw-semibold'
+                    >{course.course_title}</Link>
+                </h5>
+            </li>
+        )
+    }
 
     return (
-        <div>
-            <h2>Sidebar</h2>
-            <div>
-                {courses.map(course => <Link                 
-                key={course._id}
-                to={`/courses/${course._id}`}
-                className='d-block my-3 text-decoration-none text-dark fw-semibold'
-                >{course.course_title}</Link>)}
-            </div>
+        <div className='sidebar rounded shadow p-4 sticky-lg-top'>
+            <h2 className='text-center'>Courses List</h2>
+            <ul class="list-group list-group-flush">
+                {courses.map(course => <SidebarCourseItem key={course._id} course={course}></SidebarCourseItem>)}
+            </ul>
         </div>
     );
 };
