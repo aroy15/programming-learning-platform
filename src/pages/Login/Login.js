@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './Login.css';
@@ -7,46 +7,75 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
-    const {providerLogin} = useContext(AuthContext)
+    const [error, setError] = useState('');
+    const {providerLogin, signIn} = useContext(AuthContext)
 
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider()
-
+    
     const googleSignIn = () => {
+        setError('')
         providerLogin(googleProvider)
         .then((result) => {
             const user = result.user;
             console.log(user)
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            const errorMessage = error.message;
+            setError(errorMessage)
+        })
     }
 
     const githubSignIn = () =>{
+        setError('')
         providerLogin(githubProvider)
         .then((result) => {
             const user = result.user;
             console.log(user)
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            const errorMessage = error.message;
+            setError(errorMessage)
+        })
+    }
+
+    const handleSubmit = event =>{
+        setError('')
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+       
+        signIn(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user)
+            form.reset();
+        })
+        .catch(error =>  {
+            const errorMessage = error.message;
+            setError(errorMessage)
+        });
     }
 
     return (
         <div className='form_page'>
             <h2 className='text-center mb-4'>Login</h2>
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control name="email" type="email" placeholder="Enter email" required />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control name="password" type="password" placeholder="Password" required/>
                 </Form.Group>
                 <Button variant="success" className='w-100' type="submit">
                     Submit
                 </Button>
             </Form>
+            <p className='text-danger text-center mt-4'>{error}</p>
             <div className='mt-4 text-center login_with d-flex gap-3 justify-content-center'>
                 <Button onClick={googleSignIn} variant='outline-success' className='d-flex align-items-center flex-nowrap'><span className='pe-3'>Log In With Google</span><FaGoogle/></Button>
                 <Button onClick={githubSignIn} variant='outline-success' className='d-flex align-items-center flex-nowrap'><span className='pe-3'>Log In With Github</span><FaGithub/></Button>
