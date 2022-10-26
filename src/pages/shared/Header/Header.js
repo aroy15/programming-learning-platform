@@ -14,7 +14,7 @@ import programmingLogo from "../../../assets/img/programming-logo.webp"
 
 
 const Header = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const [themes, setThemes] = useState(true);
     const handleThemes = () => setThemes(!themes);
 
@@ -36,22 +36,25 @@ const Header = () => {
                     <div className='d-flex gap-2 align-items-center'>
                         <div>
                             {
-                                user?<Button variant='link' className='text-decoration-none text-success fw-semibold'>Log Out</Button>
-                                :
-                                <Link className='text-decoration-none text-success fw-semibold' to='/login'>Login</Link>
+                                !user ? <Link className='text-decoration-none text-success fw-semibold pe-3' to='/login'>Login</Link>
+                                    :
+                                    <>
+                                        <Button onClick={logOut} variant='link' className='text-decoration-none text-success fw-semibold'>Log Out</Button>
+                                        <OverlayTrigger
+                                            placement='left'
+                                            overlay={
+                                                <Tooltip id='tooltip-bottom2'>
+                                                    {user?.displayName}
+                                                </Tooltip>
+                                            }
+                                        >
+                                            <Button variant="link">
+                                                <Image style={{ height: '50px' }} roundedCircle src={user?.photoURL} alt="" />
+                                            </Button>
+                                        </OverlayTrigger>
+                                    </>
                             }
-                            <OverlayTrigger
-                                placement='left'
-                                overlay={
-                                    <Tooltip id='tooltip-bottom2'>
-                                        {user?.displayName}
-                                    </Tooltip>
-                                }
-                            >
-                                <Button variant="link">
-                                    <Image style={{height:'50px'}} roundedCircle src={user?.photoURL} alt="" />
-                                </Button>
-                            </OverlayTrigger>
+
                         </div>
                         <div>
                             <Button onClick={handleThemes} variant="link" className='text-dark text-decoration-none px-0'>

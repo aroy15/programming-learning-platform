@@ -3,16 +3,26 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './Login.css';
 import { FaGoogle, FaGithub } from "react-icons/fa";
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
-    const {googleProviderLogin} = useContext(AuthContext)
+    const {providerLogin} = useContext(AuthContext)
 
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider()
 
     const googleSignIn = () => {
-        googleProviderLogin(googleProvider)
+        providerLogin(googleProvider)
+        .then((result) => {
+            const user = result.user;
+            console.log(user)
+        })
+        .catch(error => console.log(error))
+    }
+
+    const githubSignIn = () =>{
+        providerLogin(githubProvider)
         .then((result) => {
             const user = result.user;
             console.log(user)
@@ -39,7 +49,7 @@ const Login = () => {
             </Form>
             <div className='mt-4 text-center login_with d-flex gap-3 justify-content-center'>
                 <Button onClick={googleSignIn} variant='outline-success' className='d-flex align-items-center flex-nowrap'><span className='pe-3'>Log In With Google</span><FaGoogle/></Button>
-                <Button variant='outline-success' className='d-flex align-items-center flex-nowrap'><span className='pe-3'>Log In With Github</span><FaGithub/></Button>
+                <Button onClick={githubSignIn} variant='outline-success' className='d-flex align-items-center flex-nowrap'><span className='pe-3'>Log In With Github</span><FaGithub/></Button>
             </div>
 
         </div>
