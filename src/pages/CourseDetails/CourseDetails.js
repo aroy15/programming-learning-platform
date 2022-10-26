@@ -12,17 +12,18 @@ const CourseDetails = () => {
             <Card.Header className='d-flex'>
 
             </Card.Header>
+            <Card.Img variant="top" className='p-3 card_img rounded-0' src={image_url} />
             <Card.Body>
                 <h2 className='card-title mb-3'>{course_title}</h2>
                 <div className='card-text'>
-                   <h3>{overview_title}</h3>
-                   <ul>
+                    <h3>{overview_title}</h3>
+                    <ul>
                         {
                             details_overview.map((detail, index) => <li
-                            key={index}
+                                key={index}
                             >{detail}</li>)
                         }
-                   </ul>
+                    </ul>
                 </div>
                 <Button variant="primary">Go somewhere</Button>
             </Card.Body>

@@ -7,7 +7,7 @@ const Main = () => {
     return (
         <div>
             <Header></Header>
-            <Container className='pt-5'>
+            <Container className='py-5'>
                 <Outlet></Outlet>
             </Container>
         </div>
