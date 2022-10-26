@@ -15,7 +15,7 @@ const Sidebar = () => {
 
     const SidebarCourseItem = ({ course }) => {
         return (
-            <li class="list-group-item px-0">
+            <li className="list-group-item px-0">
                 <h5 className='d-flex align-items-center gap-2'>
                     <span>
                         <FaCheckCircle className='text-success'/>
@@ -32,7 +32,7 @@ const Sidebar = () => {
     return (
         <div className='sidebar rounded shadow p-4 sticky-lg-top'>
             <h2 className='text-center'>Courses List</h2>
-            <ul class="list-group list-group-flush">
+            <ul className="list-group list-group-flush">
                 {courses.map(course => <SidebarCourseItem key={course._id} course={course}></SidebarCourseItem>)}
             </ul>
         </div>

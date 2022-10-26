@@ -8,6 +8,7 @@ import Faq from '../../pages/Faq/Faq';
 import Home from '../../pages/Home/Home';
 import Login from '../../pages/Login/Login';
 import Register from '../../pages/Register/Register';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 export const routes = createBrowserRouter([
     {
@@ -35,7 +36,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path:'/faq',
-                element:<Faq></Faq>
+                element:<PrivateRoute><Faq></Faq></PrivateRoute>
             },
             {
                 path:'/login',
