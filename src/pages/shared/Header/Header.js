@@ -35,17 +35,21 @@ const Header = () => {
                     </Nav>
                     <div className='d-flex gap-2 align-items-center'>
                         <div>
-                            <a className='text-decoration-none' href="#">Login</a>
+                            {
+                                user?<Button variant='link' className='text-decoration-none text-success fw-semibold'>Log Out</Button>
+                                :
+                                <Link className='text-decoration-none text-success fw-semibold' to='/login'>Login</Link>
+                            }
                             <OverlayTrigger
                                 placement='left'
                                 overlay={
                                     <Tooltip id='tooltip-bottom2'>
-                                        Tooltip on.
+                                        {user?.displayName}
                                     </Tooltip>
                                 }
                             >
                                 <Button variant="link">
-                                    <Image roundedCircle src="https://lh3.googleusercontent.com/ogw/AOh-ky2K-6YfaeRXmwx67nuO3xkD0QvMf3JBZ9mV3ri5oA=s32-c-mo" alt="" />
+                                    <Image style={{height:'50px'}} roundedCircle src={user?.photoURL} alt="" />
                                 </Button>
                             </OverlayTrigger>
                         </div>

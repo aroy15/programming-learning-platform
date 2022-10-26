@@ -1,0 +1,8 @@
+.form_page{
+    max-width:600px;
+    width:100%;
+    margin:0 auto;
+}
+.form_page .login_with .btn{
+    font-size: 1.2rem !important;
+}
