@@ -39,10 +39,14 @@ const Header = () => {
                         <Link className='nav-link fw-semibold text-success' to="/faq">FAQ</Link>
                         <Link className='nav-link fw-semibold text-success' to="/blog">Blog</Link>
                     </Nav>
-                    <div className='d-flex gap-2 align-items-center'>
+                    <div className='d-flex flex-column flex-lg-row gap-2 align-items-lg-center pt-4 pt-lg-0'>
                         <div>
                             {
-                                !user ? <Link className='text-decoration-none text-success fw-semibold pe-3' to='/login'>Login</Link>
+                                !user ? 
+                                <>
+                                <Link className='text-decoration-none text-success fw-semibold pe-3' to='/register'>Register</Link>
+                                <Link className='text-decoration-none text-success fw-semibold pe-3' to='/login'>Login</Link>
+                                </>
                                     :
                                     <>
                                         <Button onClick={handleSignOut} variant='link' className='text-decoration-none text-success fw-semibold'>Log Out</Button>

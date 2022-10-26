@@ -5,7 +5,7 @@ import './Login.css';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [error, setError] = useState('');
@@ -85,6 +85,9 @@ const Login = () => {
                 </Button>
             </Form>
             <p className='text-danger text-center mt-4'>{error}</p>
+            <div className='mt-4 text-center'>
+                New User? <Link to='/register' className='text-success fw-semibold text-decoration-none'>Register</Link>
+            </div>
             <div className='mt-4 text-center login_with d-flex gap-3 justify-content-center'>
                 <Button onClick={googleSignIn} variant='outline-success' className='d-flex align-items-center flex-nowrap'><span className='pe-3'>Log In With Google</span><FaGoogle/></Button>
                 <Button onClick={githubSignIn} variant='outline-success' className='d-flex align-items-center flex-nowrap'><span className='pe-3'>Log In With Github</span><FaGithub/></Button>
