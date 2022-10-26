@@ -23,7 +23,7 @@ const Header = () => {
                 <Navbar.Brand href="#home">Programming Education</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="ms-auto">
+                    <Nav className="mx-auto">
                         <Link className='nav-link' to="/courses">Courses</Link>
                         <Link className='nav-link' to="/faq">FAQ</Link>
                         <Link className='nav-link' to="/blog">Blog</Link>
@@ -45,7 +45,7 @@ const Header = () => {
                             </OverlayTrigger>
                         </div>
                         <div>
-                            <Button onClick={handleThemes} variant="link" className='text-dark text-decoration-none'>
+                            <Button onClick={handleThemes} variant="link" className='text-dark text-decoration-none px-0'>
                                 {
                                     themes ?
                                         <><FaMoon /> Dark</>
