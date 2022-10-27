@@ -2,8 +2,8 @@ import React from 'react';
 
 const Faq = () => {
     return (
-        <div>
-            <h2>FAQ page</h2>
+        <div className='text-center'>
+            <h2>FAQ</h2>
         </div>
     );
 };
