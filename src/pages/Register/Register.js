@@ -32,16 +32,18 @@ const Register = () => {
         }
         // Create user after solving above conditions
         createUser(email, password)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
+        .then(result => {            
             updateProfile(auth?.currentUser, {
                 displayName: name, photoURL: photoURL
             })
             .then(()=>{     
+                
                 console.log('profile updated')
             })
             .cath(error => console.log(error))
+            const user = result.user;
+            setUser(user)
+            console.log(user);
             form.reset();
         })
         .catch(error =>  {
