@@ -20,21 +20,21 @@ export const routes = createBrowserRouter([
             {
                 path:'/',
                 element:<Home></Home>,
-                loader: ()=>fetch('http://localhost:5000/courses')
+                loader: ()=>fetch('https://b610-lerning-platform-server-side-aroy15.vercel.app/courses')
             },
             {
                 path:'/courses',
                 element:<Courses></Courses>,
-                loader: ()=>fetch('http://localhost:5000/courses')
+                loader: ()=>fetch('https://b610-lerning-platform-server-side-aroy15.vercel.app/courses')
             },
             {
                 path:'/courses/:id',
                 element:<CourseDetails></CourseDetails>,
-                loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({params}) => fetch(`https://b610-lerning-platform-server-side-aroy15.vercel.app/courses/${params.id}`)
             },
             {
                 path:'/blog',
-                loader: ()=> fetch('http://localhost:5000/blog'),
+                loader: ()=> fetch('https://b610-lerning-platform-server-side-aroy15.vercel.app/blog'),
                 element:<Blog></Blog>
             },
             {
@@ -51,7 +51,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path:'/checkout/:id',
-                loader:  ({params}) => fetch(`http://localhost:5000/courses/${params.id}`),
+                loader:  ({params}) => fetch(`https://b610-lerning-platform-server-side-aroy15.vercel.app/courses/${params.id}`),
                 element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
             },
             {     

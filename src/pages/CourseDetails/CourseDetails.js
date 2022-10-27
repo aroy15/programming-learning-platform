@@ -1,23 +1,15 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './CourseDetails.css';
-import { FaGoogle, FaGithub, FaPrint, FaDownload } from "react-icons/fa";
+import { FaDownload } from "react-icons/fa";
 import Pdf from "react-to-pdf";
-// import { useReactToPrint } from 'react-to-print';
 
 const ref = React.createRef();
 
 const CourseDetails = () => {
-    const { course_title, details_overview, image_url, _id, overview_title, ratings } = useLoaderData()
-
-    // const printingAreaRef = useRef()
-    // const handlePrint = useReactToPrint({
-    //     content: () => printingAreaRef.current,
-    //     documentTitle:'emp-data',
-    //     onAfterPrint:()=>alert('Print Success')
-    // })
+    const { course_title, details_overview, image_url, _id } = useLoaderData()
 
     return (
         <>

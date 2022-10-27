@@ -6,7 +6,7 @@ Website Link:
 Hosting: Hosting provided by firebase.
 
 ## Features
- - Progamming Learning:  Python, C# 10, C++, TypeScript, PHP, Java
+ - Programming Learning:  Python, C# 10, C++, TypeScript, PHP, Java
  - Firebase Authentication
  - Registration page.
  - Login in with Google
