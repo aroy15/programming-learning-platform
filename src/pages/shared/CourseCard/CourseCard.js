@@ -1,10 +1,10 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
-import { FaCheck } from "react-icons/fa";
+import { FaCheck, FaStar } from "react-icons/fa";
 
 const CourseCard = ({ course }) => {
-    const { course_title, _id, details_overview, image_url } = course
+    const { course_title, _id, details_overview, image_url, ratings } = course
     const detailsOverview = details_overview.slice(0, 3);
 
     const CourseCardItemList = ({detail}) =>{
@@ -25,14 +25,20 @@ const CourseCard = ({ course }) => {
             <Card.Img variant="top" className='card_img p-3' src={image_url} />
             <Card.Body>
                 <Card.Title>{course_title}</Card.Title>
-                <div className='card-text py-4'>
+                <div className='card-text pt-4'>
                    
                         {
                             detailsOverview.map((detail, index) => <CourseCardItemList key={index} detail={detail}/>)
                         }
                 </div>
-                <Link to={`/courses/${_id}`} className='btn btn-success'>Reade More</Link>
+                
             </Card.Body>
+            <Card.Footer className='d-flex gap-3 justify-content-between align-items-center'>
+                <Link to={`/courses/${_id}`} className='btn btn-success'>Reade More</Link>
+                <div className='text-primary'>
+                      Ratings <FaStar/>  {ratings}
+                </div>
+            </Card.Footer>
         </Card>
     );
 };
