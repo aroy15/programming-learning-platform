@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './CourseDetails.css';
@@ -8,7 +8,7 @@ import { useReactToPrint } from 'react-to-print';
 
 
 const CourseDetails = () => {
-    const { course_title, details_overview, image_url, overview_title, ratings } = useLoaderData()
+    const { course_title, details_overview, image_url, _id, overview_title, ratings } = useLoaderData()
 
     const printingAreaRef = useRef()
     const handlePrint = useReactToPrint({
@@ -35,7 +35,7 @@ const CourseDetails = () => {
                         }
                     </ul>
                 </div>
-                <Button variant="primary">Go somewhere</Button>
+                <Link to={`/checkout/${_id}`} className="btn btn-success">Get premium access</Link>
             </Card.Body>
         </Card>
     );
