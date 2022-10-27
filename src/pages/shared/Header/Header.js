@@ -40,6 +40,7 @@ const Header = () => {
                         <Link className='nav-link fw-semibold text-success' to="/blog">Blog</Link>
                     </Nav>
                     <div className='d-flex flex-column flex-lg-row gap-2 align-items-lg-center pt-4 pt-lg-0'>
+                        
                         <div>
                             {
                                 !user ? 

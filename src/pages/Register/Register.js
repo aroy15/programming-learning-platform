@@ -1,15 +1,15 @@
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { FaGoogle, FaGithub } from "react-icons/fa";
-import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { Link } from 'react-router-dom';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {    
     const [error, setError] = useState('');
 
-    const {createUser} = useContext(AuthContext)
+    const {auth, setUser, createUser} = useContext(AuthContext)
+    
 
     const handleSubmit = event =>{
         event.preventDefault();
@@ -34,13 +34,21 @@ const Register = () => {
         createUser(email, password)
         .then(result => {
             const user = result.user;
-            console.log(user)
+            console.log(user);
+            updateProfile(auth?.currentUser, {
+                displayName: name, photoURL: photoURL
+            })
+            .then(()=>{     
+                console.log('profile updated')
+            })
+            .cath(error => console.log(error))
             form.reset();
         })
         .catch(error =>  {
             const errorMessage = error.message;
             setError(errorMessage)
-        });
+        });        
+        
     }
 
     return (
