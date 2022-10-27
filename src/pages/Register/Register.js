@@ -2,14 +2,12 @@ import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
-import { Link } from 'react-router-dom';
-import { updateProfile } from 'firebase/auth';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {    
     const [error, setError] = useState('');
-
-    const {auth, setUser, createUser} = useContext(AuthContext)
-    
+    const { updateUserProfile, setLoading, createUser} = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleSubmit = event =>{
         event.preventDefault();
@@ -30,21 +28,28 @@ const Register = () => {
             setError('password not matching');
             return;
         }
+        
         // Create user after solving above conditions
         createUser(email, password)
-        .then(result => {            
-            updateProfile(auth?.currentUser, {
-                displayName: name, photoURL: photoURL
-            })
-            .then(()=>{     
-                
+        .then(result => {  
+            const profile ={
+                displayName: name, 
+                photoURL: photoURL
+            }
+            updateUserProfile(profile)
+            .then(()=>{   
+                setLoading(true)
                 console.log('profile updated')
             })
-            .cath(error => console.log(error))
+            .catch(error =>  {
+                const errorMessage = error.message;
+                setError(errorMessage)
+            })
+
             const user = result.user;
-            setUser(user)
             console.log(user);
             form.reset();
+            navigate('/')
         })
         .catch(error =>  {
             const errorMessage = error.message;
