@@ -16,7 +16,7 @@ const CourseDetails = () => {
             <Card className='card_details' >
                 <Card.Header className='d-flex justify-content-between align-items-center gap-3'>
                     <h5 className="py-0 my-0">Courses Full Overview</h5>
-                    <Pdf targetRef={ref} filename="course-details.pdf">
+                    <Pdf targetRef={ref} filename={`${course_title.replace(/\W/gim,'-').replace(/\-?\-+/gim,"-").replace(/^\-|\-$/gim,"")}.pdf`}>
                         {({ toPdf }) => <Button onClick={toPdf} variant='link' className="text-decoration-none text-success"><FaDownload /> Download PDF</Button>}
                     </Pdf>
                     
