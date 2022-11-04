@@ -1,0 +1,15 @@
+.dark_theme, 
+.dark_theme .bg-light,
+.dark_theme .bg-dark,
+.dark_theme .card,
+.dark_theme .list-group-flush,
+.dark_theme .list-group-flush>.list-group-item {
+    background:#525050!important;
+    color:#ffffff;
+}
+
+.dark_theme .text-dark,
+.dark_theme .text-success,
+.dark_theme .text-primary{
+    color:#ffffff!important;
+}

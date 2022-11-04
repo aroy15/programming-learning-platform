@@ -16,7 +16,14 @@ import programmingLogo from "../../../assets/img/programming-logo.webp"
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
     const [themes, setThemes] = useState(true);
-    const handleThemes = () => setThemes(!themes);
+    const handleThemes = () => {
+        setThemes(!themes);
+        if(themes){
+            document.body.classList.add('dark_theme');
+        }else{
+            document.body.classList.remove('dark_theme');
+        }
+    }
 
     const handleSignOut = () =>{
         logOut()
